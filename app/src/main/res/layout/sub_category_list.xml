@@ -4,7 +4,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="10dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardViewSub"
@@ -20,7 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            card_view:ignore="PrivateResource"
+            android:padding="5dp">
 
 
             <TextView

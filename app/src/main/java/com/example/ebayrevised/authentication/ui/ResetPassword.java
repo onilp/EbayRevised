@@ -13,10 +13,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.ebayrevised.CategoryActivity;
+import com.example.ebayrevised.ui.CategoryActivity;
 import com.example.ebayrevised.R;
 import com.example.ebayrevised.network.MySingleton;
-import com.util.Constant;
+import com.example.ebayrevised.util.Constant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -71,6 +71,7 @@ public class ResetPassword extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.d(TAG,error.getMessage());
 
                     }
                 }){

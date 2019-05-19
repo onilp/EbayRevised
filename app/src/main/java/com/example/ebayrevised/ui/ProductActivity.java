@@ -1,24 +1,22 @@
-package com.example.ebayrevised;
+package com.example.ebayrevised.ui;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.ebayrevised.R;
 import com.example.ebayrevised.model.Product;
 import com.example.ebayrevised.network.MySingleton;
-import com.util.Constant;
-import com.util.ProductAdapter;
+import com.example.ebayrevised.util.Constant;
+import com.example.ebayrevised.adapter.ProductAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,12 +33,15 @@ public class ProductActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ProductAdapter productAdapter;
-
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
+        init();
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         SharedPreferences prefs = getSharedPreferences("userPref",MODE_PRIVATE);
         final String api_key = prefs.getString("appapikey","");
         final String user_id = prefs.getString("id","");
@@ -48,11 +49,12 @@ public class ProductActivity extends AppCompatActivity {
         final String scid = getIntent().getStringExtra("scid");
 
 
-        init();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.PRODUCT_LIST_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressDialog.dismiss();
                 Log.d(TAG,"Response :" + response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -106,5 +108,6 @@ public class ProductActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         productList = new ArrayList<>();
+        progressDialog = new ProgressDialog(this);
     }
 }

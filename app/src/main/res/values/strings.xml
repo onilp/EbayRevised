@@ -60,9 +60,32 @@
     <string name="enter_new_password">Enter new password :</string>
     <string name="pname">pname</string>
     <string name="prize">Prize</string>
-    <string name="quantity">Quantity</string>
     <string name="cart">Cart</string>
-    <string name="add_to_cart">Add to Cart</string>
     <string name="discription">Discription</string>
+    <string name="order_id">Order Id:</string>
+    <string name="order_status">Order Status:</string>
+    <string name="name1">Name:</string>
+    <string name="delivery_address">Delivery address:</string>
+    <string name="mobile1">Mobile :</string>
+    <string name="email1">Email:</string>
+    <string name="item_id">Item Id:</string>
+    <string name="item_name">Item Name:</string>
+    <string name="total_price">Total Price :</string>
+    <string name="item_quantity">Item Quantity</string>
+    <string name="paid_price">Paid Price</string>
+    <string name="placed_on">Placed on :</string>
+    <string name="billing_address">Billing Address</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="total_amount">Total Amount:</string>
+    <string name="card_number">Card Number:</string>
+    <string name="expiry_month">Expiry Month:</string>
+    <string name="expiry_year">Expiry Year:</string>
+    <string name="cvc_number">CVC Number</string>
+    <string name="pay">Pay</string>
+    <string name="delete_item_from_cart">Delete Item from Cart</string>
+    <string name="quantity">Quantity</string>
+    <string name="total">Total :</string>
+    <string name="total_amount1">Total Amount :</string>
+    <string name="summary">Summary</string>
 
 </resources>

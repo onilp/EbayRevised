@@ -1,23 +1,22 @@
-package com.example.ebayrevised;
+package com.example.ebayrevised.ui;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.ebayrevised.R;
 import com.example.ebayrevised.model.SubCategory;
 import com.example.ebayrevised.network.MySingleton;
-import com.util.Constant;
-import com.util.SubCategoryAdapter;
+import com.example.ebayrevised.util.Constant;
+import com.example.ebayrevised.adapter.SubCategoryAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +33,7 @@ public class SubCategoryActivity extends AppCompatActivity {
     private SubCategoryAdapter subCategoryAdapter;
     List<SubCategory> subCategoryList;
     private final String TAG = SubCategoryActivity.class.getSimpleName();
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,8 @@ public class SubCategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_sub_category);
         init();
 
+        progressDialog.setMessage("Loading..");
+        progressDialog.show();
         SharedPreferences prefs = getSharedPreferences("userPref",MODE_PRIVATE);
         final String api_key = prefs.getString("appapikey","");
         final String user_id = prefs.getString("id","");
@@ -52,6 +54,7 @@ public class SubCategoryActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.PRODUCT_SUB_CATEGORY_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressDialog.dismiss();
                 Log.d(TAG, "response :" + response);
                 try {
                     Log.d(TAG, "Shared Pref cid : " + cid + "api :" + api_key + "user id " + user_id);
@@ -101,5 +104,6 @@ public class SubCategoryActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         subCategoryList = new ArrayList<>();
+        progressDialog = new ProgressDialog(this);
     }
 }

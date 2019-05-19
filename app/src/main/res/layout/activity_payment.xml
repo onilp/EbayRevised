@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/textViewTotalAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/total_amount1"
+        app:layout_constraintBottom_toTopOf="@+id/etCardNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="@string/card_number"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/etExpiryMonth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalAmount" />
+
+    <EditText
+        android:id="@+id/etExpiryMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:ems="10"
+        android:hint="@string/expiry_month"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/etExpiryYear"
+        app:layout_constraintStart_toStartOf="@+id/etCardNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etCardNumber" />
+
+    <EditText
+        android:id="@+id/etExpiryYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:ems="10"
+        android:hint="@string/expiry_year"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/etCvcNumber"
+        app:layout_constraintStart_toStartOf="@+id/etExpiryMonth"
+        app:layout_constraintTop_toBottomOf="@+id/etExpiryMonth" />
+
+    <EditText
+        android:id="@+id/etCvcNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="@string/cvc_number"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPay"
+        app:layout_constraintStart_toStartOf="@+id/etExpiryYear"
+        app:layout_constraintTop_toBottomOf="@+id/etExpiryYear" />
+
+    <Button
+        android:id="@+id/buttonPay"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:text="@string/pay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCvcNumber" />
+</android.support.constraint.ConstraintLayout>

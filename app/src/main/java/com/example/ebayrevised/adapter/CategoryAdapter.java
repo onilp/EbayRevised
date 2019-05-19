@@ -1,4 +1,4 @@
-package com.util;
+package com.example.ebayrevised.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,16 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.example.ebayrevised.CategoryActivity;
 import com.example.ebayrevised.R;
-import com.example.ebayrevised.SubCategoryActivity;
+import com.example.ebayrevised.ui.SubCategoryActivity;
 import com.example.ebayrevised.model.Category;
-import com.example.ebayrevised.model.SubCategory;
 import com.example.ebayrevised.network.MySingleton;
 
 import java.util.List;
@@ -69,7 +66,9 @@ public class CategoryAdapter extends RecyclerView.Adapter <CategoryAdapter.MyVie
                 context.startActivity(intent);
             }
         });
+        MySingleton.getInstance(context).getRequestQueue().add(imageRequest);
     }
+
 
     @Override
     public int getItemCount() {

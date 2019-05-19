@@ -1,4 +1,4 @@
-package com.util;
+package com.example.ebayrevised.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,9 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.example.ebayrevised.ProductDetailActivity;
+import com.example.ebayrevised.ui.ProductDetailActivity;
 import com.example.ebayrevised.R;
 import com.example.ebayrevised.model.Product;
-import com.example.ebayrevised.model.ProductDetail;
 import com.example.ebayrevised.network.MySingleton;
 
 import java.util.List;
@@ -68,6 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 intent.putExtra("imageurl",p.getImage());
                 intent.putExtra("quantity",p.getQuantity());
                 intent.putExtra("pid",p.getId());
+                //Log.d("prodAdapter", p.getId() +" "+ p.getQuantity());
                 context.startActivity(intent);
 
             }

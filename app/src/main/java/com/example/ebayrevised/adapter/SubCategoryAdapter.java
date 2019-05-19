@@ -1,4 +1,4 @@
-package com.util;
+package com.example.ebayrevised.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.example.ebayrevised.ProductActivity;
+import com.example.ebayrevised.ui.ProductActivity;
 import com.example.ebayrevised.R;
 import com.example.ebayrevised.model.SubCategory;
 import com.example.ebayrevised.network.MySingleton;

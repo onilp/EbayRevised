@@ -1,13 +1,15 @@
-package com.example.ebayrevised;
+package com.example.ebayrevised.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 
+import com.example.ebayrevised.R;
 import com.example.ebayrevised.database.DbHelper;
-import com.example.ebayrevised.database.model.CartProduct;
-import com.util.CartAdapter;
+import com.example.ebayrevised.model.ProductDetail;
+import com.example.ebayrevised.adapter.CartAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +19,8 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CartAdapter cartAdapter;
-    private List<CartProduct> cartProductList;
-    DbHelper dbHelper;
-
+    private List<ProductDetail> productDetailList;
+    DbHelper dbHelper = new DbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,11 @@ public class CartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewCart);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        cartProductList = new ArrayList<>();
-        dbHelper = new DbHelper(this);
-
+        //get the list of products in cart from the db
+        productDetailList = new ArrayList<>(dbHelper.displayCart());
+        cartAdapter = new CartAdapter(getApplicationContext(),productDetailList);
+        recyclerView.setAdapter(cartAdapter);
 
     }
+
 }
